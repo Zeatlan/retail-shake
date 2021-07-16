@@ -9,12 +9,19 @@ module.exports = {
     colors: {
       white: "#fff",
       black: "#000",
+      gray: "#FAFAFA",
       blue: {
         light: '#d9efec',
         dark: '#4870D9'
       },
-      yellow: '#f9db83',
-      orange: '#f8ad83',
+      yellow: {
+        light: '#f9db83',
+        dark: '#E6C76D'
+      },
+      orange: {
+        light: '#f8ad83',
+        dark: '#D5895F'
+      },
     },
     container: {
       padding: {

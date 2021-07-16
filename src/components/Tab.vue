@@ -1,21 +1,40 @@
 <template>
   <div v-show="isActive">
-    <slot>{{ title }}</slot>
+    <div class="flex flex-col text-justify justify-between mt-12">
+      <slot />
+    </div>
   </div>
 </template>
 
 <script>
+import { computed, inject, watchEffect, getCurrentInstance } from "vue";
+import Button from "../components/Button.vue";
+
 export default {
   name: "Tab",
-  props: {
-    title: {
-      type: String,
-      default: "Tab",
-    },
+  components: {
+    Button,
   },
-  data() {
+  props: {
+    title: String,
+  },
+  setup(props) {
+    const instance = getCurrentInstance();
+    const { tabs, active } = inject("tabsState");
+
+    const index = computed(() =>
+      tabs.value.findIndex((target) => target.uid === instance.uid)
+    );
+    const isActive = computed(() => index.value === active.value);
+
+    watchEffect(() => {
+      if (index.value === -1) {
+        tabs.value.push(instance);
+      }
+    });
+
     return {
-      isActive: true,
+      isActive,
     };
   },
 };

@@ -1,0 +1,18 @@
+.tab-1 {
+    &:hover {
+        background: #d9efec;
+    }
+}
+
+.tab-2:hover {
+    &:hover {
+        background: #f9db83;
+    }
+}
+
+.tab-3:hover {
+    &:hover {
+        color: white;
+        background: #f8ad83;
+    }
+}

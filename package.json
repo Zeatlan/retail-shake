@@ -6,6 +6,7 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "@vue/babel-helper-vue-jsx-merge-props": "^1.2.1",
     "gsap": "^3.7.1",
     "jquery": "^3.6.0",
     "vue": "^3.0.5"
@@ -21,5 +22,18 @@
     "sass-loader": "^12.1.0",
     "tailwindcss": "^2.2.4",
     "vite": "^2.4.2"
-  }
+  },
+  "name": "retailshake",
+  "description": "Re-design of Retail Shake website.",
+  "main": "postcss.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zeatlan/retail-shake.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Zeatlan/retail-shake/issues"
+  },
+  "homepage": "https://github.com/Zeatlan/retail-shake#readme"
 }
