@@ -1,0 +1,54 @@
+a {
+    &:hover {
+        color: black;
+    }
+}
+
+nav {
+    & a.selectable {
+    position: relative;
+
+        &.active {
+            font-weight: 600;
+            &:after {
+                left: 0;
+                width: 100%;
+            }
+        }
+        &::after {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            right: 0;
+            width: 0;
+            bottom: -5px;
+            background: #f59b43;
+            height: 4px;
+            transition: width 0.3s ease-out;
+        }
+
+        &:hover {
+            color: black;
+            transition-duration: 0.6ms;
+            font-weight: 600;
+            &:after {
+                left: 0;
+                width: 100%;
+            }
+        }
+
+        &:focus {
+            &:after {
+                left: 0;
+                width: 100%;
+            }
+        }
+
+        &:active {
+            &:after {
+                left: 0;
+                width: 100%;
+            }
+        }
+    }
+}

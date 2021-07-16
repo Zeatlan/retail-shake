@@ -1,0 +1,14 @@
+.bubble{
+    padding: 2px;
+    border: 2px solid transparent;
+    transition: transform 0.5s ease, border 0.5s ease;
+
+    &:hover {
+        transition-duration: 0.3s;
+        background: #f8ad83;
+        color: #d9efec;
+        background-clip: content-box;
+        border: 2px solid #f8ad83;
+        transform: scale(1.3);
+    }
+}
