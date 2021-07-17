@@ -16,7 +16,13 @@
     </svg>
 
     <span class="button--bubble__container">
-      <a href="#campaign" class="button button--bubble"> {{ message }} </a>
+      <a
+        href="#campaign"
+        :class="color === '#222' ? 'text-white' : 'text-black'"
+        class="button button--bubble"
+      >
+        {{ message }}
+      </a>
       <span class="button--bubble__effect-container">
         <span class="circle top-left"></span>
         <span class="circle top-left"></span>
@@ -34,6 +40,7 @@
 
 <script>
 import gsap from "gsap";
+import { getCurrentInstance } from "@vue/runtime-core";
 export default {
   name: "Button",
   props: {
@@ -42,161 +49,157 @@ export default {
     type: String,
   },
   mounted: () => {
-    var buttonBubble = document.getElementsByClassName("button--bubble");
+    var buttonBubble = getCurrentInstance().ctx.$el.children[1];
+    var $circlesTopLeft = []; //? BUBBLES - TOP LEFT
+    var $circlesBottomRight = []; //? BUBBLES - TOP RIGHT
 
-    // FETCH BUTTON BUBBLES
-    for (var i = 0; i < buttonBubble.length; i++) {
-      var $circlesTopLeft = []; // BUBBLES - TOP LEFT
-      var $circlesBottomRight = []; // BUBBLES - TOP RIGHT
+    // <span class="button--bubble__effect-container">
+    var buttonParent = buttonBubble.childNodes.item(1);
 
-      // <span class="button--bubble__effect-container">
-      var buttonParent = buttonBubble[i].parentElement.childNodes.item(1);
-
-      //* Bubble childs are being pushed in arrays
-      for (var j = 0; j < buttonParent.childNodes.length; j++) {
-        if (buttonParent.childNodes.item(j).className == "circle top-left") {
-          $circlesTopLeft.push(buttonParent.childNodes.item(j));
-        } else if (
-          buttonParent.childNodes.item(j).className == "circle bottom-right"
-        ) {
-          $circlesBottomRight.push(buttonParent.childNodes.item(j));
-        }
+    //* Bubble childs are being pushed in arrays
+    for (var j = 0; j < buttonParent.childNodes.length; j++) {
+      if (buttonParent.childNodes.item(j).className == "circle top-left") {
+        $circlesTopLeft.push(buttonParent.childNodes.item(j));
+      } else if (
+        buttonParent.childNodes.item(j).className == "circle bottom-right"
+      ) {
+        $circlesBottomRight.push(buttonParent.childNodes.item(j));
       }
-      //! Bubble childs are pushed in arrays
-
-      //* INIT:: TIMELINE ::
-      var tl = gsap.timeline();
-      var tl2 = gsap.timeline();
-
-      var btTl = gsap.timeline({ paused: true });
-      //! END INIT:: TIMELINE ::
-
-      //* START:: BUBBLES TOP LEFT ANIMATION ::
-      tl.to($circlesTopLeft, {
-        duration: 1.7,
-        x: -25,
-        y: -25,
-        scaleY: 2,
-        ease: "slow(0.1, 0.7, false)",
-      });
-      tl.to($circlesTopLeft[0], {
-        duration: 0.1,
-        scale: 0.2,
-        x: "+=6",
-        y: "-=2",
-      });
-      tl.to(
-        $circlesTopLeft[1],
-        { duration: 0.1, scaleX: 1, scaleY: 0.8, x: "-=10", y: "-=7" },
-        "-=0.1"
-      );
-      tl.to(
-        $circlesTopLeft[2],
-        { duration: 0.1, scale: 0.2, x: "-=15", y: "+=6" },
-        "-=0.1"
-      );
-      tl.to($circlesTopLeft[0], {
-        duration: 1,
-        scale: 0,
-        x: "-=5",
-        y: "-=15",
-        opacity: 0,
-      });
-      tl.to(
-        $circlesTopLeft[1],
-        {
-          duration: 1,
-          scaleX: 0.4,
-          scaleY: 0.4,
-          x: "-=10",
-          y: "-=10",
-          opacity: 0,
-        },
-        "-=1"
-      );
-      tl.to(
-        $circlesTopLeft[2],
-        { duration: 1, scale: 0, x: "-=15", y: "+=5", opacity: 0 },
-        "-=1"
-      );
-
-      //! END:: BUBBLES TOP LEFT ANIMATION ::
-
-      //* INIT:: TIMELINE ::
-      var tlBt1 = gsap.timeline();
-      var tlBt2 = gsap.timeline();
-      //! END INIT:: TIMELINE ::
-
-      tlBt1.set($circlesTopLeft, { x: 0, y: 0, rotation: -45 });
-      tlBt1.add(tl);
-
-      //* START:: BUBBLE BOTTOM RIGHT ANIMATION ::
-      tl2.set($circlesBottomRight, { x: 0, y: 0 });
-      tl2.to($circlesBottomRight, {
-        duration: 1.7,
-        x: 30,
-        y: 30,
-        ease: "slow(0.1, 0.7, false)",
-      });
-      tl2.to($circlesBottomRight[0], {
-        duration: 0.1,
-        scale: 0.2,
-        x: "-=6",
-        y: "+=3",
-      });
-      tl2.to(
-        $circlesBottomRight[1],
-
-        { duration: 0.1, scale: 0.8, x: "+=7", y: "+=3" },
-        "-=0.1"
-      );
-      tl2.to(
-        $circlesBottomRight[2],
-        { duration: 0.1, scale: 0.2, x: "+=15", y: "-=6" },
-        "-=0.2"
-      );
-      tl2.to($circlesBottomRight[0], {
-        duration: 1,
-        scale: 0,
-        x: "+=5",
-        y: "+=15",
-        opacity: 0,
-      });
-      tl2.to(
-        $circlesBottomRight[1],
-        { duration: 1, scale: 0.4, x: "+=7", y: "+=7", opacity: 0 },
-        "-=1"
-      );
-      tl2.to(
-        $circlesBottomRight[2],
-        { duration: 1, scale: 0, x: "+=15", y: "-=5", opacity: 0 },
-        "-=1"
-      );
-      //! END:: BUBBLE BOTTOM RIGHT ANIMATION ::
-
-      tlBt2.set($circlesBottomRight, { x: 0, y: 0, rotation: 45 });
-      tlBt2.add(tl2);
-
-      btTl.add(tlBt1);
-      btTl.to(
-        buttonBubble[i].closest(".button.effect-button"),
-        { duration: 0.8, scaleY: 1.1 },
-        0.1
-      );
-      btTl.add(tlBt2, 0.2);
-      btTl.to(
-        buttonBubble[i].closest(".button.effect-button"),
-        { duration: 1.8, scale: 1, ease: "elastic.Out(1.2, 0.4)" },
-        1.2
-      );
-
-      btTl.timeScale(2.6);
-
-      // Mouse hover Listener
-      buttonBubble[i].addEventListener("mouseover", function () {
-        btTl.restart();
-      });
     }
+    //! Bubble childs are pushed in arrays
+
+    //* INIT:: TIMELINE ::
+    var tl = gsap.timeline();
+    var tl2 = gsap.timeline();
+
+    var btTl = gsap.timeline({ paused: true });
+    //! END INIT:: TIMELINE ::
+
+    //* START:: BUBBLES TOP LEFT ANIMATION ::
+    tl.to($circlesTopLeft, {
+      duration: 1.7,
+      x: -25,
+      y: -25,
+      scaleY: 2,
+      ease: "slow(0.1, 0.7, false)",
+    });
+    tl.to($circlesTopLeft[0], {
+      duration: 0.1,
+      scale: 0.2,
+      x: "+=6",
+      y: "-=2",
+    });
+    tl.to(
+      $circlesTopLeft[1],
+      { duration: 0.1, scaleX: 1, scaleY: 0.8, x: "-=10", y: "-=7" },
+      "-=0.1"
+    );
+    tl.to(
+      $circlesTopLeft[2],
+      { duration: 0.1, scale: 0.2, x: "-=15", y: "+=6" },
+      "-=0.1"
+    );
+    tl.to($circlesTopLeft[0], {
+      duration: 1,
+      scale: 0,
+      x: "-=5",
+      y: "-=15",
+      opacity: 0,
+    });
+    tl.to(
+      $circlesTopLeft[1],
+      {
+        duration: 1,
+        scaleX: 0.4,
+        scaleY: 0.4,
+        x: "-=10",
+        y: "-=10",
+        opacity: 0,
+      },
+      "-=1"
+    );
+    tl.to(
+      $circlesTopLeft[2],
+      { duration: 1, scale: 0, x: "-=15", y: "+=5", opacity: 0 },
+      "-=1"
+    );
+
+    //! END:: BUBBLES TOP LEFT ANIMATION ::
+
+    //* INIT:: TIMELINE ::
+    var tlBt1 = gsap.timeline();
+    var tlBt2 = gsap.timeline();
+    //! END INIT:: TIMELINE ::
+
+    tlBt1.set($circlesTopLeft, { x: 0, y: 0, rotation: -45 });
+    tlBt1.add(tl);
+
+    //* START:: BUBBLE BOTTOM RIGHT ANIMATION ::
+    tl2.set($circlesBottomRight, { x: 0, y: 0 });
+    tl2.to($circlesBottomRight, {
+      duration: 1.7,
+      x: 30,
+      y: 30,
+      ease: "slow(0.1, 0.7, false)",
+    });
+    tl2.to($circlesBottomRight[0], {
+      duration: 0.1,
+      scale: 0.2,
+      x: "-=6",
+      y: "+=3",
+    });
+    tl2.to(
+      $circlesBottomRight[1],
+
+      { duration: 0.1, scale: 0.8, x: "+=7", y: "+=3" },
+      "-=0.1"
+    );
+    tl2.to(
+      $circlesBottomRight[2],
+      { duration: 0.1, scale: 0.2, x: "+=15", y: "-=6" },
+      "-=0.2"
+    );
+    tl2.to($circlesBottomRight[0], {
+      duration: 1,
+      scale: 0,
+      x: "+=5",
+      y: "+=15",
+      opacity: 0,
+    });
+    tl2.to(
+      $circlesBottomRight[1],
+      { duration: 1, scale: 0.4, x: "+=7", y: "+=7", opacity: 0 },
+      "-=1"
+    );
+    tl2.to(
+      $circlesBottomRight[2],
+      { duration: 1, scale: 0, x: "+=15", y: "-=5", opacity: 0 },
+      "-=1"
+    );
+    //! END:: BUBBLE BOTTOM RIGHT ANIMATION ::
+
+    tlBt2.set($circlesBottomRight, { x: 0, y: 0, rotation: 45 });
+    tlBt2.add(tl2);
+
+    btTl.add(tlBt1);
+    btTl.to(
+      buttonBubble.closest(".button.effect-button"),
+      { duration: 0.8, scaleY: 1.1 },
+      0.1
+    );
+    btTl.add(tlBt2, 0.2);
+    btTl.to(
+      buttonBubble.closest(".button.effect-button"),
+      { duration: 1.8, scale: 1, ease: "elastic.Out(1.2, 0.4)" },
+      1.2
+    );
+
+    btTl.timeScale(2.6);
+
+    // Mouse hover Listener
+    buttonBubble.addEventListener("mouseover", function () {
+      btTl.restart();
+    });
   },
   computed: {
     cssVars() {
