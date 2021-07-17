@@ -281,12 +281,12 @@
       <!-- Numbers -->
       <div class="flex flex-row w-full justify-around mt-16 text-center">
         <div>
-          <h2 class="text-5xl font-bold">12000</h2>
-          <p class="text-xl">Marques indexées</p>
+          <h2 class="text-7xl font-bold">12000</h2>
+          <p class="text-2xl text-blue-light">Marques indexées</p>
         </div>
         <div>
-          <h2 class="text-5xl font-bold">125</h2>
-          <p class="text-xl">Enseignes indexées</p>
+          <h2 class="text-7xl font-bold">125</h2>
+          <p class="text-2xl text-blue-light">Enseignes indexées</p>
         </div>
       </div>
       <!-- END:: Numbers -->
@@ -295,6 +295,44 @@
       </div>
     </section>
     <!-- END:: Stats -->
+
+    <!-- Customers reviews -->
+    <section class="flex flex-col mt-16 p-8">
+      <h1 class="mx-auto text-6xl font-extrabold">
+        Ce que nos clients racontent
+      </h1>
+      <p class="text-gray-dark mx-auto my-6 text-xl text-center">
+        Découvrez les divers avis sur notre application
+      </p>
+      <div class="flex flex-row justify-between">
+        <Review
+          name="C.J"
+          job="Directrice marketing d'une marque de luminaire"
+          avatar="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+        >
+          Très utile. Cela m'a permis de mettre en place un plan d'actions sur
+          certaines centrales.
+        </Review>
+        <Review
+          name="Harry Vinz"
+          job="Directeur"
+          avatar="https://images.unsplash.com/photo-1518799175676-a0fed7996acb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=80"
+        >
+          Retail Shake a su répondre à mes attentes en terme de veille
+          concurrentielle.
+        </Review>
+        <Review
+          name="Christelle Carmand"
+          job="Directrice marketing d'une marque de luminaire"
+          avatar="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+          :favorable="false"
+        >
+          Retail Shake n'a pas su répondre à mes attentes en terme de veille
+          concurrentielle.
+        </Review>
+      </div>
+    </section>
+    <!-- END:: Customers reviews -->
   </main>
 </template>
 
@@ -306,6 +344,7 @@ import Player from "./components/Player.vue";
 import Tabs from "./components/Tabs.vue";
 import Tab from "./components/Tab.vue";
 import Frame from "./components/Frame.vue";
+import Review from "./components/Review.vue";
 import { ref } from "vue";
 
 export default {
@@ -318,6 +357,7 @@ export default {
     Tabs,
     Tab,
     Frame,
+    Review,
   },
   setup() {
     const active = ref(0);

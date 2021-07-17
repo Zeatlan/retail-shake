@@ -9,7 +9,10 @@ module.exports = {
     colors: {
       white: "#fff",
       black: "#000",
-      gray: "#FAFAFA",
+      gray: {
+        DEFAULT: "#FAFAFA",
+        dark: "#A7A7A7"
+      },
       blue: {
         light: '#d9efec',
         dark: '#4870D9'
@@ -22,6 +25,8 @@ module.exports = {
         light: '#f8ad83',
         dark: '#D5895F'
       },
+      green: '#4AC785',
+      red: '#D66565'
     },
     container: {
       padding: {
