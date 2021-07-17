@@ -1,5 +1,17 @@
 <template>
-  <nav class="flex flex-nowrap p-4 justify-center">
+  <nav
+    class="
+      fixed
+      top-0
+      left-0
+      bg-white
+      min-w-full
+      flex flex-nowrap
+      p-4
+      justify-center
+      z-50
+    "
+  >
     <div class="container flex flex-row justify-between">
       <!-- Logo -->
       <div class="flex items-center flex-shrink-0 text-white mr-6">

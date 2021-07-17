@@ -19,7 +19,7 @@
       "
       @click="selectTab(i)"
     >
-      {{ tab.props.title }}
+      <h1>{{ tab.props.title }}</h1>
     </li>
   </ul>
   <div class="bg-gray-300 -m-1 h-1"></div>

@@ -13,6 +13,25 @@
   />
   <!-- END:: Navigation -->
 
+  <div
+    class="
+      fixed
+      bottom-6
+      right-6
+      rounded-full
+      w-16
+      h-16
+      bg-red
+      text-white text-3xl text-center
+      cursor-pointer
+      duration-300
+      hover:bg-red-dark
+    "
+    @click="showAlert"
+  >
+    <font-awesome-icon class="my-4" :icon="['fas', 'comment']" />
+  </div>
+
   <main class="min-h-screen mx-auto bg-gray">
     <!-- Welcome -->
     <section class="flex flex-row pt-16 justify-between container mx-auto">
@@ -310,31 +329,52 @@
           Découvrez les divers avis sur notre application
         </p>
         <div class="flex flex-row justify-between">
-          <Review
-            name="C.J"
-            job="Directrice marketing d'une marque de luminaire"
-            avatar="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-          >
-            Très utile. Cela m'a permis de mettre en place un plan d'actions sur
-            certaines centrales.
-          </Review>
-          <Review
-            name="Harry Vinz"
-            job="Directeur"
-            avatar="https://images.unsplash.com/photo-1518799175676-a0fed7996acb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=80"
-          >
-            Retail Shake a su répondre à mes attentes en terme de veille
-            concurrentielle.
-          </Review>
-          <Review
-            name="Christelle Carmand"
-            job="Directrice marketing d'une marque de luminaire"
-            avatar="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
-            :favorable="false"
-          >
-            Retail Shake n'a pas su répondre à mes attentes en terme de veille
-            concurrentielle.
-          </Review>
+          <!-- SWIPER -->
+          <swiper :slidesPerView="3" :pagination="true">
+            <swiper-slide>
+              <Review
+                name="C.J"
+                job="Directrice marketing d'une marque de luminaire"
+                avatar="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+              >
+                Très utile. Cela m'a permis de mettre en place un plan d'actions
+                sur certaines centrales.
+              </Review>
+            </swiper-slide>
+            <swiper-slide>
+              <Review
+                name="Harry Vinz"
+                job="Directeur"
+                avatar="https://images.unsplash.com/photo-1518799175676-a0fed7996acb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=80"
+              >
+                Retail Shake a su répondre à mes attentes en terme de veille
+                concurrentielle.
+              </Review>
+            </swiper-slide>
+            <swiper-slide>
+              <Review
+                name="Christelle Carman"
+                job="Directrice marketing d'une marque de luminaire"
+                avatar="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+                :favorable="false"
+              >
+                Retail Shake n'a pas su répondre à mes attentes en terme de
+                veille concurrentielle.
+              </Review>
+            </swiper-slide>
+            <swiper-slide>
+              <Review
+                name="Phil Doe"
+                job="Directeur marketing d'une marque de luminaire"
+                avatar="https://images.unsplash.com/photo-1496345875659-11f7dd282d1d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
+                :favorable="false"
+              >
+                Je trouve qu'il y a trop de directeurs/directrices dans ces
+                avis. . .
+              </Review>
+            </swiper-slide>
+          </swiper>
+          <!-- END SWIPER -->
         </div>
       </div>
     </section>
@@ -397,45 +437,70 @@
         </h2>
         <div class="flex flex-col justify-between">
           <div class="flex flex-row space-x-12">
-            <Card
-              link="https://www.hodefi.fr/"
-              logo="https://www.retailshake.com/wp-content/uploads/2020/02/logo-hod%C3%A9fi.png"
-            />
-            <Card
-              link="https://www.bpifrance.fr/"
-              logo="https://www.retailshake.com/wp-content/uploads/2020/01/BPI_France_RVB_fd_blanc.png"
-            />
-            <Card
-              link="https://finovamgestion.fr/"
-              logo="https://www.retailshake.com/wp-content/uploads/2020/11/logo-finovam.png"
-            />
-            <Card
-              link="https://www.groupeird.fr/"
-              logo="https://www.retailshake.com/wp-content/uploads/2020/11/logo-groupe-ird.jpg"
-            />
-            <Card
-              link="https://www.euratechnologies.com/hotel-dentreprises/"
-              logo="https://www.retailshake.com/wp-content/uploads/2020/02/incubateur-accelerateur-startup-lille-euratechnologies.jpg"
-            />
-          </div>
+            <swiper :slidesPerView="5" :pagination="true" class="partnerSlide">
+              <swiper-slide>
+                <Card
+                  link="https://www.hodefi.fr/"
+                  logo="https://www.retailshake.com/wp-content/uploads/2020/02/logo-hod%C3%A9fi.png"
+                />
+              </swiper-slide>
 
-          <div class="flex flex-row space-x-12">
-            <Card
-              link="https://www.picom.fr/"
-              logo="https://www.retailshake.com/wp-content/uploads/2020/01/LOGO-PICOM-5CM-300DPI.jpg"
-            />
-            <Card
-              link="https://www.capdigital.com/"
-              logo="https://www.retailshake.com/wp-content/uploads/2020/11/logo_Cap_Digital.png"
-            />
-            <Card
-              link="https://uniondesmarques.fr/"
-              logo="https://www.retailshake.com/wp-content/uploads/2020/09/telechargement.png"
-            />
-            <Card
-              link="https://www.developpement-regional.total.fr/"
-              logo="https://www.retailshake.com/wp-content/uploads/2021/04/total-developpement-regional.jpg"
-            />
+              <swiper-slide>
+                <Card
+                  link="https://www.bpifrance.fr/"
+                  logo="https://www.retailshake.com/wp-content/uploads/2020/01/BPI_France_RVB_fd_blanc.png"
+                />
+              </swiper-slide>
+
+              <swiper-slide>
+                <Card
+                  link="https://finovamgestion.fr/"
+                  logo="https://www.retailshake.com/wp-content/uploads/2020/11/logo-finovam.png"
+                />
+              </swiper-slide>
+
+              <swiper-slide>
+                <Card
+                  link="https://www.groupeird.fr/"
+                  logo="https://www.retailshake.com/wp-content/uploads/2020/11/logo-groupe-ird.jpg"
+                />
+              </swiper-slide>
+
+              <swiper-slide>
+                <Card
+                  link="https://www.euratechnologies.com/hotel-dentreprises/"
+                  logo="https://www.retailshake.com/wp-content/uploads/2020/02/incubateur-accelerateur-startup-lille-euratechnologies.jpg"
+                />
+              </swiper-slide>
+
+              <swiper-slide>
+                <Card
+                  link="https://www.picom.fr/"
+                  logo="https://www.retailshake.com/wp-content/uploads/2020/01/LOGO-PICOM-5CM-300DPI.jpg"
+                />
+              </swiper-slide>
+
+              <swiper-slide>
+                <Card
+                  link="https://www.capdigital.com/"
+                  logo="https://www.retailshake.com/wp-content/uploads/2020/11/logo_Cap_Digital.png"
+                />
+              </swiper-slide>
+
+              <swiper-slide>
+                <Card
+                  link="https://uniondesmarques.fr/"
+                  logo="https://www.retailshake.com/wp-content/uploads/2020/09/telechargement.png"
+                />
+              </swiper-slide>
+
+              <swiper-slide>
+                <Card
+                  link="https://www.developpement-regional.total.fr/"
+                  logo="https://www.retailshake.com/wp-content/uploads/2021/04/total-developpement-regional.jpg"
+                />
+              </swiper-slide>
+            </swiper>
           </div>
         </div>
         <!-- END:: Soutiens -->
@@ -478,7 +543,16 @@ import Frame from "./components/Frame.vue";
 import Review from "./components/Review.vue";
 import Card from "./components/Card.vue";
 import Footer from "./components/Footer.vue";
+
+// Import Swiper Vue.js components
+import { Swiper, SwiperSlide } from "swiper/vue";
+import "swiper/swiper.scss";
+import "swiper/components/pagination/pagination.min.css";
+import SwiperCore, { Pagination } from "swiper/core";
+
 import { ref } from "vue";
+
+SwiperCore.use([Pagination]);
 
 export default {
   name: "App",
@@ -493,14 +567,41 @@ export default {
     Review,
     Card,
     Footer,
+    Swiper,
+    SwiperSlide,
   },
   setup() {
     const active = ref(0);
 
     return { active };
   },
+  methods: {
+    showAlert() {
+      this.$swal(
+        "Félicitations, votre souris fonctionne bel et bien !",
+        "Merci de prendre le temps de visiter cette petite refonte, néanmoins je n'avais pas pour projet de refaire une chatbox ! :)",
+        "success"
+      );
+    },
+  },
 };
 
 // This starter template is using Vue 3 experimental <script setup> SFCs
 // Check out https://github.com/vuejs/rfcs/blob/master/active-rfcs/0040-script-setup.md
 </script>
+
+<style>
+.swiper-wrapper {
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+}
+
+.partnerSlide {
+  min-height: 200px;
+}
+.swiper-slide-prev {
+  transition: 0.3s;
+  opacity: 0.5;
+}
+</style>

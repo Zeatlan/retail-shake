@@ -4,6 +4,7 @@
       relative
       w-96
       h-84
+      min-h-[23rem]
       rounded-xl
       shadow-xl
       bg-blue-light
@@ -41,7 +42,7 @@
       <div class="flex flex-col ml-auto text-center">
         <div
           class="
-            bg-blue-dark
+            bg-blue-darker
             mb-6
             p-1
             w-16
@@ -49,6 +50,8 @@
             rounded-full
             text-white
             cursor-pointer
+            duration-300
+            hover:bg-blue-dark
           "
         >
           <font-awesome-icon :icon="['fas', 'link']" />

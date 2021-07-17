@@ -1,7 +1,13 @@
 module.exports = {
-  purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
+  mode: 'jit',
+  purge: ['./public/**/*.html', './src/**/*.{js,jsx,ts,tsx,vue}'],
   darkMode: false, // or 'media' or 'class'
   theme: {
+    extend: {
+      minHeight: (theme) => ({
+        ...theme('spacing')
+      })
+    },
     fontFamily: {
       'header': ['Raleway', 'sans-serif'],
       'body': ['Nunito', 'sans-serif']
@@ -28,7 +34,10 @@ module.exports = {
         dark: '#D5895F'
       },
       green: '#4AC785',
-      red: '#D66565',
+      red: {
+        DEFAULT: '#D66565',
+        dark: '#B44C4C'
+      },
       purple: '#C598DC'
     },
     container: {
