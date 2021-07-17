@@ -2,10 +2,24 @@ $bg : var(--bg);
 $starting-color: #90feb5;
 $action-color: $starting-color;
 $pp: var(--img-people);
+$bg-card: var(--img-card);
 
 body {
   margin: 0;
   padding: 0;
+}
+
+.card {
+  background-image: $bg-card;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  &-link {
+    background-image: $bg-card;
+    background-size: 70%;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
 }
 
 .pp {

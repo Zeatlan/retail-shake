@@ -11,11 +11,13 @@ module.exports = {
       black: "#000",
       gray: {
         DEFAULT: "#FAFAFA",
+        light: "#CDCDCD",
         dark: "#A7A7A7"
       },
       blue: {
         light: '#d9efec',
-        dark: '#4870D9'
+        dark: '#4870D9',
+        darker: '#2748A1'
       },
       yellow: {
         light: '#f9db83',
@@ -26,7 +28,8 @@ module.exports = {
         dark: '#D5895F'
       },
       green: '#4AC785',
-      red: '#D66565'
+      red: '#D66565',
+      purple: '#C598DC'
     },
     container: {
       padding: {

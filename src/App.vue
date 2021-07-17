@@ -13,9 +13,9 @@
   />
   <!-- END:: Navigation -->
 
-  <main class="min-h-screen container mx-auto">
+  <main class="min-h-screen mx-auto bg-gray">
     <!-- Welcome -->
-    <section class="flex flex-row pt-16 justify-between">
+    <section class="flex flex-row pt-16 justify-between container mx-auto">
       <div class="flex-col mr-12">
         <h1 class="mx-auto mt-12 text-4xl font-black">
           La nouvelle veille concurrentielle, intégrale, automatique,
@@ -48,8 +48,8 @@
     <!-- END:: Welcome -->
 
     <!-- Explanation -->
-    <section class="flex mt-32 py-8 rounded-xl">
-      <div class="py-10 bg-gray">
+    <section class="flex bg-white mt-32 py-8">
+      <div class="py-10 container mx-auto">
         <tabs v-model="active">
           <tab title="Optimisez">
             <!-- Optimisez votre veille concurrentielle -->
@@ -275,64 +275,195 @@
     <!-- END:: Explanation -->
 
     <!-- Stats -->
-    <section class="flex flex-col p-8 rounded-xl bg-blue-dark text-white">
-      <h1 class="mx-auto text-6xl font-extrabold">Retail Shake en chiffres</h1>
+    <section class="p-8 bg-blue-dark text-white">
+      <div class="flex flex-col container mx-auto">
+        <h1 class="mx-auto text-6xl font-extrabold">
+          Retail Shake en chiffres
+        </h1>
 
-      <!-- Numbers -->
-      <div class="flex flex-row w-full justify-around mt-16 text-center">
-        <div>
-          <h2 class="text-7xl font-bold">12000</h2>
-          <p class="text-2xl text-blue-light">Marques indexées</p>
+        <!-- Numbers -->
+        <div class="flex flex-row w-full justify-around mt-16 text-center">
+          <div>
+            <h2 class="text-7xl font-bold">12000</h2>
+            <p class="text-2xl text-blue-light">Marques indexées</p>
+          </div>
+          <div>
+            <h2 class="text-7xl font-bold">125</h2>
+            <p class="text-2xl text-blue-light">Enseignes indexées</p>
+          </div>
         </div>
-        <div>
-          <h2 class="text-7xl font-bold">125</h2>
-          <p class="text-2xl text-blue-light">Enseignes indexées</p>
+        <!-- END:: Numbers -->
+        <div class="mt-16 mx-auto">
+          <Button message="Demandez une démo" color="#fff" type="bubble" />
         </div>
-      </div>
-      <!-- END:: Numbers -->
-      <div class="mt-16 mx-auto">
-        <Button message="Demandez une démo" color="#fff" type="bubble" />
       </div>
     </section>
     <!-- END:: Stats -->
 
     <!-- Customers reviews -->
-    <section class="flex flex-col mt-16 p-8">
-      <h1 class="mx-auto text-6xl font-extrabold">
-        Ce que nos clients racontent
-      </h1>
-      <p class="text-gray-dark mx-auto my-6 text-xl text-center">
-        Découvrez les divers avis sur notre application
-      </p>
-      <div class="flex flex-row justify-between">
-        <Review
-          name="C.J"
-          job="Directrice marketing d'une marque de luminaire"
-          avatar="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-        >
-          Très utile. Cela m'a permis de mettre en place un plan d'actions sur
-          certaines centrales.
-        </Review>
-        <Review
-          name="Harry Vinz"
-          job="Directeur"
-          avatar="https://images.unsplash.com/photo-1518799175676-a0fed7996acb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=80"
-        >
-          Retail Shake a su répondre à mes attentes en terme de veille
-          concurrentielle.
-        </Review>
-        <Review
-          name="Christelle Carmand"
-          job="Directrice marketing d'une marque de luminaire"
-          avatar="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
-          :favorable="false"
-        >
-          Retail Shake n'a pas su répondre à mes attentes en terme de veille
-          concurrentielle.
-        </Review>
+    <section class="pt-16 p-8 bg-white">
+      <div class="flex flex-col container mx-auto">
+        <h1 class="mx-auto text-6xl font-extrabold">
+          Ce que nos clients racontent
+        </h1>
+        <p class="text-gray-dark mx-auto my-6 text-xl text-center">
+          Découvrez les divers avis sur notre application
+        </p>
+        <div class="flex flex-row justify-between">
+          <Review
+            name="C.J"
+            job="Directrice marketing d'une marque de luminaire"
+            avatar="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+          >
+            Très utile. Cela m'a permis de mettre en place un plan d'actions sur
+            certaines centrales.
+          </Review>
+          <Review
+            name="Harry Vinz"
+            job="Directeur"
+            avatar="https://images.unsplash.com/photo-1518799175676-a0fed7996acb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=80"
+          >
+            Retail Shake a su répondre à mes attentes en terme de veille
+            concurrentielle.
+          </Review>
+          <Review
+            name="Christelle Carmand"
+            job="Directrice marketing d'une marque de luminaire"
+            avatar="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+            :favorable="false"
+          >
+            Retail Shake n'a pas su répondre à mes attentes en terme de veille
+            concurrentielle.
+          </Review>
+        </div>
       </div>
     </section>
     <!-- END:: Customers reviews -->
+
+    <!-- Partnership -->
+    <section class="mt-16 bg-gray">
+      <div class="flex flex-col container mx-auto">
+        <h1 class="mx-auto text-6xl font-extrabold">
+          Ils nous font confiance !
+        </h1>
+
+        <!-- Enseignes -->
+        <h2 class="text-2xl text-gray-dark uppercase mx-auto mt-12">
+          Enseignes
+        </h2>
+        <div class="flex space-x-12 justify-between">
+          <Card
+            logo="https://www.retailshake.com/wp-content/uploads/2020/11/logo_calipage.png"
+          />
+          <Card
+            logo="https://www.retailshake.com/wp-content/uploads/2020/04/logo_mecatechnic.png"
+          />
+          <Card
+            logo="https://www.retailshake.com/wp-content/uploads/2020/10/logo_weldom.png"
+          />
+          <Card
+            logo="https://www.retailshake.com/wp-content/uploads/2021/04/logo_picwictoys.png"
+          />
+          <Card
+            logo="https://www.retailshake.com/wp-content/uploads/2021/02/logo_leroymerlin.png"
+          />
+        </div>
+        <!-- END:: Enseignes -->
+
+        <!-- Marques -->
+        <h2 class="text-2xl text-gray-dark uppercase mx-auto">Marques</h2>
+        <div class="flex space-x-12 justify-between">
+          <Card
+            logo="https://www.retailshake.com/wp-content/uploads/2020/03/logo_corep.png"
+          />
+          <Card
+            logo="https://www.retailshake.com/wp-content/uploads/2020/03/logo_mathias.png"
+          />
+          <Card
+            logo="https://www.retailshake.com/wp-content/uploads/2021/04/logo_ar-shelving.png"
+          />
+          <Card
+            logo="https://www.retailshake.com/wp-content/uploads/2021/04/sampa.png"
+          />
+          <Card
+            logo="https://www.retailshake.com/wp-content/uploads/2021/04/logo_brilliant.png"
+          />
+        </div>
+        <!-- END:: Marques -->
+
+        <!-- Soutiens -->
+        <h2 class="text-2xl text-gray-dark uppercase mx-auto mt-12">
+          Ils nous soutiennent
+        </h2>
+        <div class="flex flex-col justify-between">
+          <div class="flex flex-row space-x-12">
+            <Card
+              link="https://www.hodefi.fr/"
+              logo="https://www.retailshake.com/wp-content/uploads/2020/02/logo-hod%C3%A9fi.png"
+            />
+            <Card
+              link="https://www.bpifrance.fr/"
+              logo="https://www.retailshake.com/wp-content/uploads/2020/01/BPI_France_RVB_fd_blanc.png"
+            />
+            <Card
+              link="https://finovamgestion.fr/"
+              logo="https://www.retailshake.com/wp-content/uploads/2020/11/logo-finovam.png"
+            />
+            <Card
+              link="https://www.groupeird.fr/"
+              logo="https://www.retailshake.com/wp-content/uploads/2020/11/logo-groupe-ird.jpg"
+            />
+            <Card
+              link="https://www.euratechnologies.com/hotel-dentreprises/"
+              logo="https://www.retailshake.com/wp-content/uploads/2020/02/incubateur-accelerateur-startup-lille-euratechnologies.jpg"
+            />
+          </div>
+
+          <div class="flex flex-row space-x-12">
+            <Card
+              link="https://www.picom.fr/"
+              logo="https://www.retailshake.com/wp-content/uploads/2020/01/LOGO-PICOM-5CM-300DPI.jpg"
+            />
+            <Card
+              link="https://www.capdigital.com/"
+              logo="https://www.retailshake.com/wp-content/uploads/2020/11/logo_Cap_Digital.png"
+            />
+            <Card
+              link="https://uniondesmarques.fr/"
+              logo="https://www.retailshake.com/wp-content/uploads/2020/09/telechargement.png"
+            />
+            <Card
+              link="https://www.developpement-regional.total.fr/"
+              logo="https://www.retailshake.com/wp-content/uploads/2021/04/total-developpement-regional.jpg"
+            />
+          </div>
+        </div>
+        <!-- END:: Soutiens -->
+
+        <!-- Partner -->
+        <h2 class="text-2xl text-gray-dark uppercase mx-auto mt-12">
+          Nos partenaires
+        </h2>
+        <div class="flex flex-row space-x-12">
+          <Card
+            link="https://www.qualimetrie.com/"
+            logo="https://www.retailshake.com/wp-content/uploads/2021/04/Qualimetrie.png"
+          />
+          <Card
+            link="https://www.adix.fr/"
+            logo="https://www.retailshake.com/wp-content/uploads/2021/05/logo-adix.png"
+          />
+          <Card
+            link="https://www.drive.win/"
+            logo="https://www.retailshake.com/wp-content/uploads/2021/05/logo_drivewin_RVB.jpg"
+          />
+        </div>
+        <!-- END:: Partner -->
+      </div>
+    </section>
+    <!-- END:: Partnership -->
+
+    <Footer />
   </main>
 </template>
 
@@ -345,6 +476,8 @@ import Tabs from "./components/Tabs.vue";
 import Tab from "./components/Tab.vue";
 import Frame from "./components/Frame.vue";
 import Review from "./components/Review.vue";
+import Card from "./components/Card.vue";
+import Footer from "./components/Footer.vue";
 import { ref } from "vue";
 
 export default {
@@ -358,6 +491,8 @@ export default {
     Tab,
     Frame,
     Review,
+    Card,
+    Footer,
   },
   setup() {
     const active = ref(0);
