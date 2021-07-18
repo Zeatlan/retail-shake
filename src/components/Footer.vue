@@ -1,7 +1,7 @@
 <template>
   <footer class="mt-6 pb-16 bg-blue-darker text-white">
     <div class="container mx-auto mt-12">
-      <div class="flex flex-row">
+      <div class="flex flex-col md:flex-row">
         <div class="flex relative w-2/3 mt-16 mb-6">
           <div
             class="
@@ -11,36 +11,47 @@
               bg-blue-dark
               p-24
               text-center
-              h-64
-              w-64
               rounded-full
+              w-32
+              h-32
+              md:h-64
+              md:w-64
             "
           ></div>
           <div
             class="
               relative
               top-0
-              left-28
               bg-orange-dark bg-opacity-80
-              p-24
               text-center
-              h-96
-              w-96
               rounded-full
+              h-64
+              w-64
+              left-16
+              p-12
+              md:p-24
+              md:left-28
+              md:h-96
+              md:w-96
             "
           >
-            <h1 class="text-2xl">S'inscrire à la newsletter</h1>
+            <h1 class="text-lg md:text-2xl">S'inscrire à la newsletter</h1>
 
             <input
               type="text"
               class="
+                relative
                 p-3
-                mt-5
+                w-36
+                z-50
                 rounded-md
                 text-gray-dark
                 focus:outline-none
                 focus:ring-2 focus:ring-blue-dark
                 focus:border-transparent
+                mt-2
+                md:mt-5
+                md:w-auto
               "
               placeholder="salimalexo@gmail.com"
             />
@@ -49,13 +60,15 @@
               class="
                 relative
                 p-3
-                w-36
                 z-50
                 bg-blue-darker
-                mt-5
                 rounded-xl
                 duration-300
                 hover:bg-blue-dark
+                w-24
+                mt-2
+                md:w-36
+                md:mt-5
               "
             >
               S'inscrire
@@ -64,29 +77,33 @@
           <div
             class="
               absolute
-              top-64
-              left-80
               bg-yellow-dark bg-opacity-80
               p-24
               text-center
-              h-32
-              w-32
               rounded-full
+              top-32
+              left-44
+              h-16
+              w-16
+              md:top-64
+              md:left-80
+              md:h-32
+              md:w-32
             "
           ></div>
         </div>
-        <div class="flex flex-col w-1/3 mt-6">
+        <div class="flex flex-col mt-6 text-center md:text-left md:w-96">
           <img
             src="../assets/img/retailshake_icon.png"
             alt="Retail Shake"
             width="100"
-            class="ml-1"
+            class="mx-auto mt-12 md:ml-1 md:mt-0"
           />
           <h1 class="text-xl">Retail shake</h1>
           <p class="text-gray-light mt-2">71 quai de l'Ouest, 59000 Lille</p>
 
           <!-- Menu -->
-          <ul class="footer-menu mt-2 -ml-4">
+          <ul class="mt-2 -ml-4 flex flex-col items-center lg:items-start">
             <a href="#"
               ><li
                 class="
@@ -121,7 +138,7 @@
           <!-- END:: Menu -->
 
           <!-- Social medias -->
-          <div class="flex-row space-x-12 text-2xl mt-6">
+          <div class="flex-row items-center space-x-3 text-2xl mt-6">
             <a
               href="#"
               class="

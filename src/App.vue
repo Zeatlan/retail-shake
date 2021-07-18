@@ -21,48 +21,22 @@
   <!-- END:: Navigation -->
 
   <!-- Choosing mode -->
-  <div class="fixed bottom-6 left-6 flex justify-end items-center space-x-2">
-    <!-- OLD 
-    <span class="text-sm text-black">Light</span>
-
-    <div>
-      <input
-        type="checkbox"
-        name=""
-        id="toggle"
-        class="hidden"
-        @change="darkmode"
-      />
-      <label for="toggle">
-        <div
-          class="
-            w-12
-            h-5
-            flex
-            items-center
-            bg-blue-light
-            rounded-full
-            p-1
-            border border-blue-darker
-          "
-        >
-          <div
-            class="
-              toggle-dot
-              duration-300
-              w-4
-              h-4
-              bg-white
-              rounded-full
-              shadow-md
-            "
-          ></div>
-        </div>
-      </label>
-    </div>
-
-    <span class="text-sm text-gray-dark">Dark</span>
-    END:: OLD -->
+  <div
+    class="
+      fixed
+      flex
+      justify-end
+      items-center
+      space-x-2
+      opacity-70
+      z-50
+      hover:opacity-100
+      bottom-16
+      left-6
+      md:bottom-6
+      md:left-6
+    "
+  >
     <div class="relative">
       <input
         type="checkbox"
@@ -81,8 +55,6 @@
   <div
     class="
       fixed
-      bottom-6
-      right-6
       rounded-full
       w-16
       h-16
@@ -91,12 +63,16 @@
       cursor-pointer
       duration-300
       hover:bg-red-dark
+      z-50
+      bottom-16
+      right-8
+      md:bottom-6
+      md:right-6
     "
     @click="showAlert"
   >
     <font-awesome-icon class="my-4" :icon="['fas', 'comment']" />
   </div>
-
   <!-- END:: Chatbox -->
 
   <main class="min-h-screen mx-auto bg-gray dark:bg-dark-gray dark:text-gray">
@@ -110,17 +86,41 @@
         min-h-screen
         overflow-x-hidden
         space-y-24
+        pt-28
+        2xl:pt-0
       "
     >
-      <div class="flex flex-row">
-        <div class="flex-col mr-12">
-          <h1 class="mx-auto mt-12 text-4xl font-black dark:text-blue-dark">
+      <div class="flex flex-col md:flex-row">
+        <div class="flex-col p-2 2xl:mr-12">
+          <h1
+            class="
+              mx-auto
+              mt-12
+              font-black
+              dark:text-blue-dark
+              text-center
+              md:text-left
+              text-xl
+              md:text-3xl
+              2xl:text-4xl
+            "
+          >
             La nouvelle veille concurrentielle, intégrale, automatique,
             quotidienne.
           </h1>
-          <div class="mt-4 bg-orange w-48 h-2"></div>
+          <div
+            class="
+              mt-4
+              bg-blue-darker
+              w-48
+              h-1.5
+              dark:bg-blue-light
+              mx-auto
+              md:mx-0
+            "
+          ></div>
 
-          <p class="mt-12">
+          <p class="mt-6 2xl:mt-12">
             Retail Shake est un outil de veille à 360° : veille tarifaire,
             comparaison des produits, benchmark prix, pige promo, surveillance
             des stocks géolocalisée, veille stratégique par secteurs d’activité…
@@ -131,7 +131,7 @@
           </p>
 
           <Button
-            class="mt-16"
+            class="mt-16 text-center md:text-left"
             message="Demandez une démo"
             :color="darkMode ? '#202738' : '#d9efec'"
             type="bubble"
@@ -148,74 +148,24 @@
         <h2 class="text-2xl text-center font-bold dark:text-orange-light">
           Ils nous font confiance !
         </h2>
+
+        <!-- Trusted companies -->
         <div class="flex flex-row">
           <swiper
-            :slidesPerView="4"
+            :slidesPerView="nbElementsSwiper"
             :pagination="true"
             :autoplay="true"
             class="partnerSlide"
           >
-            <swiper-slide>
-              <Card
-                logo="https://www.retailshake.com/wp-content/uploads/2020/11/logo_calipage.png"
-              />
-            </swiper-slide>
-
-            <swiper-slide>
-              <Card
-                logo="https://www.retailshake.com/wp-content/uploads/2020/04/logo_mecatechnic.png"
-              />
-            </swiper-slide>
-
-            <swiper-slide>
-              <Card
-                logo="https://www.retailshake.com/wp-content/uploads/2020/10/logo_weldom.png"
-              />
-            </swiper-slide>
-
-            <swiper-slide>
-              <Card
-                logo="https://www.retailshake.com/wp-content/uploads/2021/04/logo_picwictoys.png"
-              />
-            </swiper-slide>
-
-            <swiper-slide>
-              <Card
-                logo="https://www.retailshake.com/wp-content/uploads/2021/02/logo_leroymerlin.png"
-              />
-            </swiper-slide>
-
-            <swiper-slide>
-              <Card
-                logo="https://www.retailshake.com/wp-content/uploads/2020/03/logo_corep.png"
-              />
-            </swiper-slide>
-
-            <swiper-slide>
-              <Card
-                logo="https://www.retailshake.com/wp-content/uploads/2020/03/logo_mathias.png"
-              />
-            </swiper-slide>
-
-            <swiper-slide>
-              <Card
-                logo="https://www.retailshake.com/wp-content/uploads/2021/04/logo_ar-shelving.png"
-              />
-            </swiper-slide>
-
-            <swiper-slide>
-              <Card
-                logo="https://www.retailshake.com/wp-content/uploads/2021/04/sampa.png"
-              />
-            </swiper-slide>
-
-            <swiper-slide>
-              <Card
-                logo="https://www.retailshake.com/wp-content/uploads/2021/04/logo_brilliant.png"
-              />
+            <swiper-slide
+              v-for="(companieLogo, index) in trustedCompanies"
+              :key="index"
+            >
+              <Card :logo="companieLogo" />
             </swiper-slide>
           </swiper>
         </div>
+        <!-- END:: Trusted compagnies -->
       </div>
     </section>
     <!-- END:: Welcome -->
@@ -226,7 +176,6 @@
         <tabs v-model="active">
           <tab title="Optimisez">
             <!-- Optimisez votre veille concurrentielle -->
-
             <Frame
               img="https://www.retailshake.com/wp-content/uploads/2020/10/Capture-4.jpg"
               :txtOnTheRight="true"
@@ -450,17 +399,27 @@
     <!-- Stats -->
     <section class="p-8 bg-blue-darker text-white">
       <div class="flex flex-col container mx-auto">
-        <h1 class="mx-auto text-6xl font-extrabold">
+        <h1 class="mx-auto font-extrabold text-3xl md:text-6xl">
           Retail Shake en chiffres
         </h1>
 
         <!-- Numbers -->
-        <div class="flex flex-row w-full justify-around mt-16 text-center">
+        <div
+          class="
+            flex
+            w-full
+            justify-around
+            mt-16
+            text-center
+            flex-col
+            md:flex-row
+          "
+        >
           <div>
             <h2 class="text-7xl font-bold">12000</h2>
             <p class="text-2xl text-blue-light">Marques indexées</p>
           </div>
-          <div>
+          <div class="mt-16 mb-6 md:mt-0 md:mb-0">
             <h2 class="text-7xl font-bold">125</h2>
             <p class="text-2xl text-blue-light">Enseignes indexées</p>
           </div>
@@ -481,7 +440,16 @@
     <!-- Customers reviews -->
     <section class="pt-16 p-8 bg-white min-h-screen dark:bg-dark-darkgray">
       <div class="flex flex-col container mx-auto">
-        <h1 class="mx-auto text-6xl font-extrabold dark:text-blue-dark">
+        <h1
+          class="
+            mx-auto
+            text-6xl
+            font-extrabold
+            dark:text-blue-dark
+            text-center
+            md:text-left
+          "
+        >
           Ce que nos clients racontent
         </h1>
         <p class="text-gray-dark mx-auto my-16 text-xl text-center">
@@ -489,7 +457,7 @@
         </p>
         <div class="flex flex-row justify-between mt-8">
           <!-- SWIPER -->
-          <swiper :slidesPerView="3" :pagination="true">
+          <swiper :slidesPerView="nbElementsSwiper - 1" :pagination="true">
             <swiper-slide>
               <Review
                 name="C.J"
@@ -549,7 +517,11 @@
         <!-- Soutiens -->
         <div class="flex flex-col justify-between">
           <div class="flex flex-row space-x-12">
-            <swiper :slidesPerView="5" :pagination="true" class="partnerSlide">
+            <swiper
+              :slidesPerView="nbElementsSwiper"
+              :pagination="true"
+              class="partnerSlide"
+            >
               <swiper-slide>
                 <Card
                   link="https://www.hodefi.fr/"
@@ -621,7 +593,7 @@
         <h2 class="text-2xl text-gray-dark uppercase mx-auto mt-12">
           Nos partenaires
         </h2>
-        <div class="flex flex-row space-x-12 justify-center">
+        <div class="flex flex-col items-center md:flex-row md:space-x-12">
           <Card
             link="https://www.qualimetrie.com/"
             logo="https://www.retailshake.com/wp-content/uploads/2021/04/Qualimetrie.png"
@@ -671,6 +643,19 @@ export default {
     return {
       loading: false,
       darkMode: false,
+      trustedCompanies: [
+        "https://www.retailshake.com/wp-content/uploads/2020/11/logo_calipage.png",
+        "https://www.retailshake.com/wp-content/uploads/2020/04/logo_mecatechnic.png",
+        "https://www.retailshake.com/wp-content/uploads/2020/10/logo_weldom.png",
+        "https://www.retailshake.com/wp-content/uploads/2021/04/logo_picwictoys.png",
+        "https://www.retailshake.com/wp-content/uploads/2021/02/logo_leroymerlin.png",
+        "https://www.retailshake.com/wp-content/uploads/2020/03/logo_corep.png",
+        "https://www.retailshake.com/wp-content/uploads/2020/03/logo_mathias.png",
+        "https://www.retailshake.com/wp-content/uploads/2021/04/logo_ar-shelving.png",
+        "https://www.retailshake.com/wp-content/uploads/2021/04/sampa.png",
+        "https://www.retailshake.com/wp-content/uploads/2021/04/logo_brilliant.png",
+      ],
+      nbElementsSwiper: 4,
     };
   },
   components: {
@@ -692,12 +677,18 @@ export default {
     return { active };
   },
   mounted() {
+    // Set Dark/Light mode
     let t = true;
     if (localStorage.getItem("darkmode")) {
       if (localStorage.getItem("darkmode") === "true") t = true;
       else t = false;
 
       this.darkMode = t;
+    }
+
+    // Set number elements to display on Swiper
+    if (window.screen.availWidth < 700) {
+      this.nbElementsSwiper = 2;
     }
   },
   watch: {

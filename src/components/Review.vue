@@ -2,9 +2,9 @@
   <div
     class="
       relative
-      w-96
+      w-80
       h-84
-      min-h-[23rem]
+      min-h-[24rem]
       rounded-xl
       shadow-xl
       bg-blue-light
@@ -31,7 +31,7 @@
 
     <!-- Header -->
     <div class="flex flex-row h-28">
-      <!-- INFOS -->
+      <!-- :INFOS -->
       <div class="flex flex-col w-48">
         <h2 class="font-extrabold text-xl text-blue-dark dark:text-blue-light">
           {{ name }}

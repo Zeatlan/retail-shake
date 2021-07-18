@@ -1,12 +1,19 @@
 <template>
-  <ul class="flex space-x-16 w-1/2 mx-auto">
+  <ul
+    class="
+      flex flex-col
+      justify-center
+      mx-auto
+      text-center
+      md:space-x-16
+      md:flex-row
+    "
+  >
     <li
       v-for="(tab, i) of tabs"
       :key="i"
       :class="[active === i ? colors[i] : '', className[i]]"
       class="
-        flex
-        items-center
         px-6
         py-3
         rounded-tl-md rounded-tr-md
