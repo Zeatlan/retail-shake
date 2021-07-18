@@ -397,7 +397,7 @@
     <!-- END:: Explanation -->
 
     <!-- Stats -->
-    <section class="p-8 bg-blue-darker text-white">
+    <section class="numbers p-8 bg-blue-darker text-white">
       <div class="flex flex-col container mx-auto">
         <h1 class="mx-auto font-extrabold text-3xl md:text-6xl">
           Retail Shake en chiffres
@@ -416,11 +416,11 @@
           "
         >
           <div>
-            <h2 class="text-7xl font-bold">12000</h2>
+            <h2 class="text-7xl font-bold number">12000</h2>
             <p class="text-2xl text-blue-light">Marques indexées</p>
           </div>
           <div class="mt-16 mb-6 md:mt-0 md:mb-0">
-            <h2 class="text-7xl font-bold">125</h2>
+            <h2 class="text-7xl font-bold number">125</h2>
             <p class="text-2xl text-blue-light">Enseignes indexées</p>
           </div>
         </div>
@@ -633,6 +633,9 @@ import "swiper/swiper.scss";
 import "swiper/components/pagination/pagination.min.css";
 import SwiperCore, { Pagination } from "swiper/core";
 
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 import { ref } from "vue";
 
 SwiperCore.use([Pagination]);
@@ -690,6 +693,30 @@ export default {
     if (window.screen.availWidth < 700) {
       this.nbElementsSwiper = 2;
     }
+
+    // Numbers animation
+    const items = document.querySelectorAll(".number");
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.from(items, {
+      scrollTrigger: {
+        trigger: "section.numbers",
+        toggleActions: "play none none none",
+      },
+      textContent: 0,
+      duration: 2,
+      ease: "power1.in",
+      snap: { textContent: 1 },
+      stagger: {
+        each: 1.0,
+        onUpdate: function () {
+          this.targets()[0].innerHTML = Math.ceil(
+            this.targets()[0].textContent
+          );
+        },
+      },
+    });
   },
   watch: {
     darkMode(newMode) {
