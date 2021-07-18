@@ -103,42 +103,119 @@
     <!-- Welcome -->
     <section
       class="
-        flex flex-row
-        items-center
-        justify-center
+        flex flex-col
+        justify-end
         container
         mx-auto
         min-h-screen
+        overflow-x-hidden
+        space-y-24
       "
     >
-      <div class="flex-col mr-12">
-        <h1 class="mx-auto mt-12 text-4xl font-black dark:text-blue-dark">
-          La nouvelle veille concurrentielle, intégrale, automatique,
-          quotidienne.
-        </h1>
-        <div class="mt-4 bg-orange w-48 h-2"></div>
+      <div class="flex flex-row">
+        <div class="flex-col mr-12">
+          <h1 class="mx-auto mt-12 text-4xl font-black dark:text-blue-dark">
+            La nouvelle veille concurrentielle, intégrale, automatique,
+            quotidienne.
+          </h1>
+          <div class="mt-4 bg-orange w-48 h-2"></div>
 
-        <p class="mt-12">
-          Retail Shake est un outil de veille à 360° : veille tarifaire,
-          comparaison des produits, benchmark prix, pige promo, surveillance des
-          stocks géolocalisée, veille stratégique par secteurs d’activité…
-        </p>
-        <p class="mt-2">
-          Il vous permet de suivre les marques et les enseignes qui vous
-          intéressent.
-        </p>
+          <p class="mt-12">
+            Retail Shake est un outil de veille à 360° : veille tarifaire,
+            comparaison des produits, benchmark prix, pige promo, surveillance
+            des stocks géolocalisée, veille stratégique par secteurs d’activité…
+          </p>
+          <p class="mt-2">
+            Il vous permet de suivre les marques et les enseignes qui vous
+            intéressent.
+          </p>
 
-        <Button
-          class="mt-16"
-          message="Demandez une démo"
-          :color="darkMode ? '#202738' : '#d9efec'"
-          type="bubble"
-          :darkMode="darkMode"
-        />
+          <Button
+            class="mt-16"
+            message="Demandez une démo"
+            :color="darkMode ? '#202738' : '#d9efec'"
+            type="bubble"
+            :darkMode="darkMode"
+          />
+        </div>
+
+        <div class="mt-24">
+          <Player src="/src/assets/retail_shake_demo.mp4" :autoplay="true" />
+        </div>
       </div>
 
-      <div class="mt-24">
-        <Player src="/src/assets/retail_shake_demo.mp4" :autoplay="true" />
+      <div class="flex flex-col">
+        <h2 class="text-2xl text-center font-bold dark:text-orange-light">
+          Ils nous font confiance !
+        </h2>
+        <div class="flex flex-row">
+          <swiper
+            :slidesPerView="4"
+            :pagination="true"
+            :autoplay="true"
+            class="partnerSlide"
+          >
+            <swiper-slide>
+              <Card
+                logo="https://www.retailshake.com/wp-content/uploads/2020/11/logo_calipage.png"
+              />
+            </swiper-slide>
+
+            <swiper-slide>
+              <Card
+                logo="https://www.retailshake.com/wp-content/uploads/2020/04/logo_mecatechnic.png"
+              />
+            </swiper-slide>
+
+            <swiper-slide>
+              <Card
+                logo="https://www.retailshake.com/wp-content/uploads/2020/10/logo_weldom.png"
+              />
+            </swiper-slide>
+
+            <swiper-slide>
+              <Card
+                logo="https://www.retailshake.com/wp-content/uploads/2021/04/logo_picwictoys.png"
+              />
+            </swiper-slide>
+
+            <swiper-slide>
+              <Card
+                logo="https://www.retailshake.com/wp-content/uploads/2021/02/logo_leroymerlin.png"
+              />
+            </swiper-slide>
+
+            <swiper-slide>
+              <Card
+                logo="https://www.retailshake.com/wp-content/uploads/2020/03/logo_corep.png"
+              />
+            </swiper-slide>
+
+            <swiper-slide>
+              <Card
+                logo="https://www.retailshake.com/wp-content/uploads/2020/03/logo_mathias.png"
+              />
+            </swiper-slide>
+
+            <swiper-slide>
+              <Card
+                logo="https://www.retailshake.com/wp-content/uploads/2021/04/logo_ar-shelving.png"
+              />
+            </swiper-slide>
+
+            <swiper-slide>
+              <Card
+                logo="https://www.retailshake.com/wp-content/uploads/2021/04/sampa.png"
+              />
+            </swiper-slide>
+
+            <swiper-slide>
+              <Card
+                logo="https://www.retailshake.com/wp-content/uploads/2021/04/logo_brilliant.png"
+              />
+            </swiper-slide>
+          </swiper>
+        </div>
       </div>
     </section>
     <!-- END:: Welcome -->
@@ -466,57 +543,10 @@
     <section class="mt-16 bg-gray dark:bg-dark-gray">
       <div class="flex flex-col container mx-auto">
         <h1 class="mx-auto text-6xl font-extrabold dark:text-blue-dark">
-          Ils nous font confiance !
+          Ils nous soutiennent !
         </h1>
 
-        <!-- Enseignes -->
-        <h2 class="text-2xl text-gray-dark uppercase mx-auto mt-12">
-          Enseignes
-        </h2>
-        <div class="flex space-x-12 justify-between">
-          <Card
-            logo="https://www.retailshake.com/wp-content/uploads/2020/11/logo_calipage.png"
-          />
-          <Card
-            logo="https://www.retailshake.com/wp-content/uploads/2020/04/logo_mecatechnic.png"
-          />
-          <Card
-            logo="https://www.retailshake.com/wp-content/uploads/2020/10/logo_weldom.png"
-          />
-          <Card
-            logo="https://www.retailshake.com/wp-content/uploads/2021/04/logo_picwictoys.png"
-          />
-          <Card
-            logo="https://www.retailshake.com/wp-content/uploads/2021/02/logo_leroymerlin.png"
-          />
-        </div>
-        <!-- END:: Enseignes -->
-
-        <!-- Marques -->
-        <h2 class="text-2xl text-gray-dark uppercase mx-auto">Marques</h2>
-        <div class="flex space-x-12 justify-between">
-          <Card
-            logo="https://www.retailshake.com/wp-content/uploads/2020/03/logo_corep.png"
-          />
-          <Card
-            logo="https://www.retailshake.com/wp-content/uploads/2020/03/logo_mathias.png"
-          />
-          <Card
-            logo="https://www.retailshake.com/wp-content/uploads/2021/04/logo_ar-shelving.png"
-          />
-          <Card
-            logo="https://www.retailshake.com/wp-content/uploads/2021/04/sampa.png"
-          />
-          <Card
-            logo="https://www.retailshake.com/wp-content/uploads/2021/04/logo_brilliant.png"
-          />
-        </div>
-        <!-- END:: Marques -->
-
         <!-- Soutiens -->
-        <h2 class="text-2xl text-gray-dark uppercase mx-auto mt-12">
-          Ils nous soutiennent
-        </h2>
         <div class="flex flex-col justify-between">
           <div class="flex flex-row space-x-12">
             <swiper :slidesPerView="5" :pagination="true" class="partnerSlide">
@@ -591,7 +621,7 @@
         <h2 class="text-2xl text-gray-dark uppercase mx-auto mt-12">
           Nos partenaires
         </h2>
-        <div class="flex flex-row space-x-12">
+        <div class="flex flex-row space-x-12 justify-center">
           <Card
             link="https://www.qualimetrie.com/"
             logo="https://www.retailshake.com/wp-content/uploads/2021/04/Qualimetrie.png"
