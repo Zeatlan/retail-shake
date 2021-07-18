@@ -1,11 +1,4 @@
 <template>
-  <!-- PRELOADER -->
-  <transition v-if="loading" name="slide-fade" mode="in-out">
-    <div class="preloader-wrapper">
-      <span class="preloader"><span class="preloader-inner"></span></span>
-    </div>
-  </transition>
-
   <!-- Navigation -->
   <Nav
     :items="[
@@ -20,64 +13,6 @@
   />
   <!-- END:: Navigation -->
 
-  <!-- Choosing mode -->
-  <div class="fixed bottom-6 left-6 flex justify-end items-center space-x-2">
-    <!-- OLD 
-    <span class="text-sm text-black">Light</span>
-
-    <div>
-      <input
-        type="checkbox"
-        name=""
-        id="toggle"
-        class="hidden"
-        @change="darkmode"
-      />
-      <label for="toggle">
-        <div
-          class="
-            w-12
-            h-5
-            flex
-            items-center
-            bg-blue-light
-            rounded-full
-            p-1
-            border border-blue-darker
-          "
-        >
-          <div
-            class="
-              toggle-dot
-              duration-300
-              w-4
-              h-4
-              bg-white
-              rounded-full
-              shadow-md
-            "
-          ></div>
-        </div>
-      </label>
-    </div>
-
-    <span class="text-sm text-gray-dark">Dark</span>
-    END:: OLD -->
-    <div class="relative">
-      <input
-        type="checkbox"
-        id="toggle"
-        class="toggle--checkbox"
-        v-model="darkMode"
-      />
-      <label for="toggle" class="toggle--label">
-        <span class="toggle--label-background"></span>
-      </label>
-    </div>
-  </div>
-  <!-- END:: Choosing mode -->
-
-  <!-- Chatbox -->
   <div
     class="
       fixed
@@ -97,22 +32,13 @@
     <font-awesome-icon class="my-4" :icon="['fas', 'comment']" />
   </div>
 
-  <!-- END:: Chatbox -->
-
-  <main class="min-h-screen mx-auto bg-gray dark:bg-dark-gray dark:text-gray">
+  <main class="min-h-screen mx-auto bg-gray">
     <!-- Welcome -->
     <section
-      class="
-        flex flex-row
-        items-center
-        justify-center
-        container
-        mx-auto
-        min-h-screen
-      "
+      class="flex flex-row pt-48 justify-between container mx-auto min-h-screen"
     >
       <div class="flex-col mr-12">
-        <h1 class="mx-auto mt-12 text-4xl font-black dark:text-blue-dark">
+        <h1 class="mx-auto mt-12 text-4xl font-black">
           La nouvelle veille concurrentielle, intégrale, automatique,
           quotidienne.
         </h1>
@@ -131,9 +57,8 @@
         <Button
           class="mt-16"
           message="Demandez une démo"
-          :color="darkMode ? '#202738' : '#d9efec'"
+          color="#d9efec"
           type="bubble"
-          :darkMode="darkMode"
         />
       </div>
 
@@ -144,7 +69,7 @@
     <!-- END:: Welcome -->
 
     <!-- Explanation -->
-    <section class="flex bg-white mt-32 py-8 dark:bg-dark-darkgray">
+    <section class="flex bg-white mt-32 py-8">
       <div class="py-10 container mx-auto">
         <tabs v-model="active">
           <tab title="Optimisez">
@@ -371,7 +296,7 @@
     <!-- END:: Explanation -->
 
     <!-- Stats -->
-    <section class="p-8 bg-blue-darker text-white">
+    <section class="p-8 bg-blue-dark text-white">
       <div class="flex flex-col container mx-auto">
         <h1 class="mx-auto text-6xl font-extrabold">
           Retail Shake en chiffres
@@ -390,21 +315,16 @@
         </div>
         <!-- END:: Numbers -->
         <div class="mt-16 mx-auto">
-          <Button
-            message="Demandez une démo"
-            :color="darkMode ? '#232323' : '#fff'"
-            type="bubble"
-            :darkMode="darkMode"
-          />
+          <Button message="Demandez une démo" color="#fff" type="bubble" />
         </div>
       </div>
     </section>
     <!-- END:: Stats -->
 
     <!-- Customers reviews -->
-    <section class="pt-16 p-8 bg-white min-h-screen dark:bg-dark-darkgray">
+    <section class="pt-16 p-8 bg-white min-h-screen">
       <div class="flex flex-col container mx-auto">
-        <h1 class="mx-auto text-6xl font-extrabold dark:text-blue-dark">
+        <h1 class="mx-auto text-6xl font-extrabold">
           Ce que nos clients racontent
         </h1>
         <p class="text-gray-dark mx-auto my-16 text-xl text-center">
@@ -463,9 +383,9 @@
     <!-- END:: Customers reviews -->
 
     <!-- Partnership -->
-    <section class="mt-16 bg-gray dark:bg-dark-gray">
+    <section class="mt-16 bg-gray">
       <div class="flex flex-col container mx-auto">
-        <h1 class="mx-auto text-6xl font-extrabold dark:text-blue-dark">
+        <h1 class="mx-auto text-6xl font-extrabold">
           Ils nous font confiance !
         </h1>
 
@@ -615,15 +535,15 @@
 </template>
 
 <script>
-import Nav from "./components/Nav.vue";
-import Button from "./components/Button.vue";
-import Player from "./components/Player.vue";
-import Tabs from "./components/Tabs.vue";
-import Tab from "./components/Tab.vue";
-import Frame from "./components/Frame.vue";
-import Review from "./components/Review.vue";
-import Card from "./components/Card.vue";
-import Footer from "./components/Footer.vue";
+import Nav from "./Nav.vue";
+import Button from "./Button.vue";
+import Player from "./Player.vue";
+import Tabs from "./Tabs.vue";
+import Tab from "./Tab.vue";
+import Frame from "./Frame.vue";
+import Review from "./Review.vue";
+import Card from "./Card.vue";
+import Footer from "./Footer.vue";
 
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from "swiper/vue";
@@ -636,14 +556,9 @@ import { ref } from "vue";
 SwiperCore.use([Pagination]);
 
 export default {
-  name: "App",
-  data() {
-    return {
-      loading: false,
-      darkMode: false,
-    };
-  },
+  name: "Main",
   components: {
+    HelloWorld,
     Nav,
     Button,
     Player,
@@ -655,27 +570,12 @@ export default {
     Footer,
     Swiper,
     SwiperSlide,
+    Preloader,
   },
   setup() {
     const active = ref(0);
 
     return { active };
-  },
-  mounted() {
-    let t = true;
-    if (localStorage.getItem("darkmode")) {
-      if (localStorage.getItem("darkmode") === "true") t = true;
-      else t = false;
-
-      this.darkMode = t;
-    }
-  },
-  watch: {
-    darkMode(newMode) {
-      localStorage.setItem("darkmode", newMode);
-      document.querySelector("html").classList.toggle("dark");
-      console.log("SWAP DARKMODE");
-    },
   },
   methods: {
     showAlert() {
@@ -702,16 +602,5 @@ export default {
 .swiper-slide-prev {
   transition: 0.3s;
   opacity: 0.5;
-}
-.slide-fade-enter-active {
-  transition: all 0.3s ease;
-}
-.slide-fade-leave-active {
-  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
-}
-.slide-fade-enter, .slide-fade-leave-to
-/* .slide-fade-leave-active below version 2.1.8 */ {
-  transform: translateX(10px);
-  opacity: 0;
 }
 </style>

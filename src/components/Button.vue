@@ -18,7 +18,7 @@
     <span class="button--bubble__container">
       <a
         href="#campaign"
-        :class="color === '#222' ? 'text-white' : 'text-black'"
+        :class="darkMode ? 'text-white' : 'text-black'"
         class="button button--bubble"
       >
         {{ message }}
@@ -47,6 +47,7 @@ export default {
     message: String,
     color: String,
     type: String,
+    darkMode: Boolean,
   },
   mounted: () => {
     var buttonBubble = getCurrentInstance().ctx.$el.children[1];

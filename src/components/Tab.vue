@@ -1,6 +1,16 @@
 <template>
   <div v-show="isActive">
-    <div class="flex flex-col text-justify justify-between mt-12">
+    <div
+      class="
+        flex flex-col
+        text-justify
+        justify-between
+        mt-12
+        p-4
+        rounded-xl
+        dark:bg-dark-gray
+      "
+    >
       <slot />
     </div>
   </div>

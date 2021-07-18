@@ -6,7 +6,7 @@ a {
 
 nav {
     & a.selectable {
-    position: relative;
+        position: relative;
 
         &.active {
             font-weight: 600;
@@ -28,7 +28,6 @@ nav {
         }
 
         &:hover {
-            color: black;
             transition-duration: 0.6ms;
             font-weight: 600;
             &:after {
@@ -48,6 +47,35 @@ nav {
             &:after {
                 left: 0;
                 width: 100%;
+            }
+        }
+    }
+
+    & a.demo-button {
+        &:hover {
+            color: white;
+
+            span {
+                transform: translateY(0) scale(2);
+            }
+        }
+
+        & span {
+            position: absolute;
+            width: 25%;
+            height: 100%;
+            background-color: #f8ad83;
+            transform: translateY(150%);
+            border-radius: 50%;
+            left: calc((var(--n) - 1) * 25%);
+            transition: 0.5s;
+            transition-delay: calc((var(--n) - 1) * 0.1s);
+            z-index: -1;
+
+            @for $i from 1 through 4 {
+                &:nth-child(#{$i}) {
+                    --n: #{$i}
+                }
             }
         }
     }

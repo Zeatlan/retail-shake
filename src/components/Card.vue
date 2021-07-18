@@ -3,18 +3,25 @@
     <div
       class="
         card-link
-        border border-gray-light
-        bg-white
+        bg-gray
+        border border-gray-dark
         shadow-md
         my-6
         rounded-3xl
         h-32
         w-56
         align-middle
+        duration-300
+        hover:bg-white
+        hover:border hover:border-gray-light
+        hover:-translate-y-2
+        hover:shadow-xl
+        dark:bg-dark-gray
       "
       :style="bg"
     ></div>
   </a>
+
   <div
     class="
       card
@@ -26,6 +33,7 @@
       h-32
       w-64
       align-middle
+      dark:bg-dark-lightgray
     "
     :style="bg"
     v-if="!link"

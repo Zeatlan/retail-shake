@@ -10,6 +10,8 @@
       p-4
       justify-center
       z-50
+      dark:bg-dark-gray
+      dark:text-gray
     "
   >
     <div class="container flex flex-row justify-between">
@@ -47,8 +49,17 @@
       </div>
       <!-- End responsive Hamburger Menu -->
 
-      <div class="lg:flex lg:items-center">
-        <div class="text-md px-5 font-header font-medium lg:flex-grow">
+      <div class="hidden lg:flex lg:flex-row lg:items-center">
+        <div
+          class="
+            text-md
+            px-5
+            font-header font-medium
+            lg:flex lg:flex-row
+            lg:items-center
+            lg:justify-center
+          "
+        >
           <a
             href="#"
             v-for="(item, index) in items"
@@ -60,7 +71,8 @@
               lg:inline-block
               lg:mt-0
               text-teal-200
-              hover:text-blue-400
+              hover:text-black
+              dark:hover:text-white
               mr-6
             "
             :class="{ active: index == 0 }"
@@ -71,33 +83,39 @@
           <a
             href="#responsive-header"
             class="
+              overflow-hidden
+              relative
+              demo-button
               block
               mt-4
               ml-2
-              text-teal-200
-              hover:text-blue-400
               mr-6
-              border-2
+              border
               rounded-full
-              border-black
+              border-gray-dark
               py-1
               px-6
+              duration-500
               lg:inline-block
               lg:mt-0
+              hover:border-black
             "
           >
             Démo
+
+            <span></span><span></span><span></span><span></span>
           </a>
 
           <!-- Juste pour faire beau -->
           <img
             src="../assets/img/english.png"
             alt="English flag"
-            class="block lg:inline-block lg-mt-0 cursor-pointer"
+            width="18"
+            class="block lg:inline-block cursor-pointer"
           />
 
           <!-- Search icon -->
-          <div class="block lg:inline-block ml-4 cursor-pointer">
+          <div class="block ml-4 cursor-pointer">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-4 w-4"

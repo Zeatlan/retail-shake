@@ -10,7 +10,7 @@
         {{ title }}
       </h1>
       <h2 class="text-md mb-2">{{ subtitle }}</h2>
-      <div class="w-48 h-1.5" :class="'bg-' + color + '-light'"></div>
+      <div class="w-48 h-1" :class="'bg-' + color + '-dark'"></div>
 
       <slot />
     </div>

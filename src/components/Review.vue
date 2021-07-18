@@ -11,6 +11,7 @@
       px-12
       py-16
       my-16
+      dark:bg-blue-darker
     "
   >
     <div
@@ -23,6 +24,7 @@
         w-24
         h-24
         border-8 border-blue-light
+        dark:border-blue-darker
       "
       :style="getAvatar"
     ></div>
@@ -31,7 +33,7 @@
     <div class="flex flex-row h-28">
       <!-- INFOS -->
       <div class="flex flex-col w-48">
-        <h2 class="font-extrabold text-xl text-blue-dark">
+        <h2 class="font-extrabold text-xl text-blue-dark dark:text-blue-light">
           {{ name }}
         </h2>
         <span class="text-gray-dark mt-5">{{ job }}</span>
@@ -52,6 +54,10 @@
             cursor-pointer
             duration-300
             hover:bg-blue-dark
+            dark:bg-blue-light
+            dark:text-blue-darker
+            dark:hover:bg-blue-dark
+            dark:hover:text-blue-light
           "
         >
           <font-awesome-icon :icon="['fas', 'link']" />

@@ -1,7 +1,7 @@
 module.exports = {
+  darkMode: 'class',
   mode: 'jit',
   purge: ['./public/**/*.html', './src/**/*.{js,jsx,ts,tsx,vue}'],
-  darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
       minHeight: (theme) => ({
@@ -38,7 +38,12 @@ module.exports = {
         DEFAULT: '#D66565',
         dark: '#B44C4C'
       },
-      purple: '#C598DC'
+      purple: '#C598DC',
+      dark: {
+        lightgray: '#182935',
+        gray: '#111827',
+        darkgray: '#0A0E18'
+      }
     },
     container: {
       padding: {
@@ -49,5 +54,5 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: []
 }
