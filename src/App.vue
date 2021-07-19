@@ -78,6 +78,7 @@
   <main class="min-h-screen mx-auto bg-gray dark:bg-dark-gray dark:text-gray">
     <!-- Welcome -->
     <section
+      id="welcome"
       class="
         flex flex-col
         justify-end
@@ -110,6 +111,7 @@
           </h1>
           <div
             class="
+              bar
               mt-4
               bg-blue-darker
               w-48
@@ -139,12 +141,12 @@
           />
         </div>
 
-        <div class="mt-24">
+        <div class="player mt-24">
           <Player src="/src/assets/retail_shake_demo.mp4" :autoplay="true" />
         </div>
       </div>
 
-      <div class="flex flex-col">
+      <div class="trusted flex flex-col">
         <h2 class="text-2xl text-center font-bold dark:text-orange-light">
           Ils nous font confiance !
         </h2>
@@ -171,7 +173,10 @@
     <!-- END:: Welcome -->
 
     <!-- Explanation -->
-    <section class="flex bg-white mt-32 py-8 dark:bg-dark-darkgray">
+    <section
+      id="explanation"
+      class="flex bg-white mt-32 py-8 dark:bg-dark-darkgray"
+    >
       <div class="py-10 container mx-auto">
         <tabs v-model="active">
           <tab title="Optimisez">
@@ -397,7 +402,7 @@
     <!-- END:: Explanation -->
 
     <!-- Stats -->
-    <section class="numbers p-8 bg-blue-darker text-white">
+    <section id="stats" class="numbers p-8 bg-blue-darker text-white">
       <div class="flex flex-col container mx-auto">
         <h1 class="mx-auto font-extrabold text-3xl md:text-6xl">
           Retail Shake en chiffres
@@ -438,7 +443,10 @@
     <!-- END:: Stats -->
 
     <!-- Customers reviews -->
-    <section class="pt-16 p-8 bg-white min-h-screen dark:bg-dark-darkgray">
+    <section
+      id="customers"
+      class="pt-16 p-8 bg-white min-h-screen dark:bg-dark-darkgray"
+    >
       <div class="flex flex-col container mx-auto">
         <h1
           class="
@@ -508,14 +516,14 @@
     <!-- END:: Customers reviews -->
 
     <!-- Partnership -->
-    <section class="mt-16 bg-gray dark:bg-dark-gray">
+    <section id="partners" class="mt-16 bg-gray dark:bg-dark-gray">
       <div class="flex flex-col container mx-auto">
         <h1 class="mx-auto text-6xl font-extrabold dark:text-blue-dark">
           Ils nous soutiennent !
         </h1>
 
         <!-- Soutiens -->
-        <div class="flex flex-col justify-between">
+        <div id="soutien" class="flex flex-col justify-between">
           <div class="flex flex-row space-x-12">
             <swiper
               :slidesPerView="nbElementsSwiper"
@@ -593,7 +601,10 @@
         <h2 class="text-2xl text-gray-dark uppercase mx-auto mt-12">
           Nos partenaires
         </h2>
-        <div class="flex flex-col items-center md:flex-row md:space-x-12">
+        <div
+          id="part"
+          class="flex flex-col items-center md:flex-row md:space-x-12"
+        >
           <Card
             link="https://www.qualimetrie.com/"
             logo="https://www.retailshake.com/wp-content/uploads/2021/04/Qualimetrie.png"
@@ -635,6 +646,8 @@ import SwiperCore, { Pagination } from "swiper/core";
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 import { ref } from "vue";
 
@@ -694,10 +707,64 @@ export default {
       this.nbElementsSwiper = 2;
     }
 
-    // Numbers animation
-    const items = document.querySelectorAll(".number");
+    //? Page animation
+    //* Navbar
+    gsap.from("nav", {
+      y: -200,
+      duration: 1,
+    });
 
-    gsap.registerPlugin(ScrollTrigger);
+    //* Homepage (Welcome page)
+    let homepage = gsap.timeline();
+    let homepage_header = gsap.timeline();
+
+    homepage_header
+      .from("section#welcome h1", {
+        y: -350,
+        duration: 1,
+      })
+      .from("section#welcome .bar", {
+        x: -350,
+        duration: 0.5,
+      });
+
+    homepage
+      .from("section#welcome p", {
+        x: -350,
+        duration: 1,
+      })
+      .from("section#welcome .butt-on", {
+        opacity: 0,
+        duration: 0.5,
+      });
+
+    gsap.from("section#welcome .player", {
+      x: 350,
+      duration: 1,
+    });
+
+    gsap.from("section#welcome .trusted", {
+      opacity: 0,
+      duration: 1,
+    });
+
+    gsap.from("section#welcome .trusted .card", {
+      opacity: 0,
+      stagger: 0.3,
+      scale: 2,
+    });
+
+    //* Explanation
+    gsap.from("section#explanation ul.tabs", {
+      scrollTrigger: {
+        trigger: "section#explanation",
+      },
+      opacity: 0,
+      y: -200,
+    });
+
+    //* Stats
+    const items = document.querySelectorAll(".number");
 
     gsap.from(items, {
       scrollTrigger: {
@@ -717,12 +784,43 @@ export default {
         },
       },
     });
+
+    //* Customers
+    gsap.from("section#customers .review", {
+      scrollTrigger: {
+        trigger: "section#customers",
+      },
+      opacity: 0,
+      stagger: 0.5,
+      scale: 0,
+      duration: 1,
+    });
+
+    //* Partners
+    gsap.from("section#partners div#soutien .card", {
+      scrollTrigger: {
+        trigger: "section#partners",
+      },
+      opacity: 0,
+      stagger: 0.3,
+      scale: 2,
+      duration: 0.5,
+    });
+
+    gsap.from("section#partners div#part .card", {
+      scrollTrigger: {
+        trigger: "section#partners",
+      },
+      opacity: 0,
+      stagger: 0.3,
+      scale: 2,
+      duration: 0.5,
+    });
   },
   watch: {
     darkMode(newMode) {
       localStorage.setItem("darkmode", newMode);
       document.querySelector("html").classList.toggle("dark");
-      console.log("SWAP DARKMODE");
     },
   },
   methods: {
@@ -761,5 +859,16 @@ export default {
 /* .slide-fade-leave-active below version 2.1.8 */ {
   transform: translateX(10px);
   opacity: 0;
+}
+
+[v-cloak] {
+  display: none !important;
+}
+
+[v-cloak]::before {
+  content: "Loading...";
+  display: flex;
+  justify-content: center;
+  justify-items: center;
 }
 </style>

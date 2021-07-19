@@ -130,14 +130,15 @@
       <!-- END:: Mobile Menu -->
 
       <!-- DESKTOP MENU -->
-      <div class="hidden lg:flex lg:flex-row lg:items-center">
+      <div id="desktop" class="hidden lg:flex lg:flex-row lg:items-center">
         <div
           class="
+            hidden
+            menu
             border-t-4 border-blue-darker
             text-md
             font-header font-medium
             px-5
-            shadow-xl
             lg:border-0
             lg:flex lg:flex-row
             lg:items-center
@@ -206,25 +207,36 @@
               width="18"
               class="block w-6 lg:inline-block cursor-pointer"
             />
-
-            <!-- Search icon -->
-            <div class="hidden ml-4 cursor-pointer lg:inline-block">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-4 w-4"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                />
-              </svg>
-            </div>
           </div>
+        </div>
+
+        <input
+          type="text"
+          name="search"
+          id="search"
+          placeholder="Que recherchez-vous ?"
+          class="
+            hidden
+            w-96
+            p-3
+            rounded-2xl
+            border border-black
+            dark:bg-dark-gray
+            dark:border-blue-dark
+          "
+        />
+        <!-- Search icon -->
+        <div class="hidden ml-4 cursor-pointer lg:inline-block">
+          <font-awesome-icon
+            @click="search"
+            class="hidden search-cancel"
+            :icon="['fas', 'times']"
+          />
+          <font-awesome-icon
+            @click="search"
+            class="search-icon"
+            :icon="['fas', 'search']"
+          />
         </div>
       </div>
       <!-- END:: DESKTOP Menu -->
@@ -241,10 +253,121 @@ export default {
   },
   data() {
     return {
+      searching: false,
       display: false,
     };
   },
   methods: {
+    search() {
+      var searchingTL = gsap.timeline();
+      var menuSwap = gsap.timeline();
+      this.searching = !this.searching;
+
+      // Hide menu + Show input
+      if (this.searching) {
+        menuSwap
+          .fromTo(
+            "nav #desktop .menu",
+            { opacity: 1 },
+            {
+              opacity: 0,
+              duration: 0.3,
+            }
+          )
+          .fromTo(
+            "nav #desktop input",
+            {
+              y: -150,
+              opacity: 0,
+            },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.3,
+            }
+          );
+
+        document.body
+          .querySelector("nav #desktop input")
+          .classList.remove("hidden");
+
+        searchingTL
+          .fromTo(
+            "nav #desktop .search-icon",
+            {
+              opacity: 1,
+            },
+            {
+              opacity: 0,
+              duration: 0.3,
+            }
+          )
+          .then(() => {
+            document.body
+              .querySelector("nav #desktop .search-icon")
+              .classList.add("hidden");
+
+            document.body
+              .querySelector("nav #desktop .search-cancel")
+              .classList.remove("hidden");
+          });
+        gsap.to("nav #desktop .search-cancel", {
+          opacity: 1,
+          duration: 0.3,
+        });
+      } else {
+        // Show menu + Hide input
+        menuSwap
+          .fromTo(
+            "nav #desktop input",
+            {
+              y: 0,
+              opacity: 1,
+            },
+            {
+              y: -150,
+              opacity: 0,
+              duration: 0.3,
+            }
+          )
+          .fromTo(
+            "nav #desktop .menu",
+            { opacity: 0 },
+            {
+              opacity: 1,
+              duration: 0.5,
+            }
+          );
+        document.body
+          .querySelector("nav #desktop input")
+          .classList.add("hidden");
+
+        searchingTL
+          .fromTo(
+            "nav #desktop .search-cancel",
+            {
+              opacity: 1,
+            },
+            {
+              opacity: 0,
+              duration: 0.3,
+            }
+          )
+          .then(() => {
+            document.body
+              .querySelector("nav #desktop .search-icon")
+              .classList.remove("hidden");
+
+            document.body
+              .querySelector("nav #desktop .search-cancel")
+              .classList.add("hidden");
+          });
+        gsap.to("nav #desktop .search-icon", {
+          opacity: 1,
+          duration: 0.3,
+        });
+      }
+    },
     burgerMenu() {
       this.display = !this.display;
       let selectableTimeline = gsap.timeline();

@@ -2,7 +2,7 @@
   <a :href="link" target="_blank" rel="noopener noreferrer" v-if="link">
     <div
       class="
-        card-link
+        card card-link
         bg-gray
         border border-gray-dark
         shadow-md

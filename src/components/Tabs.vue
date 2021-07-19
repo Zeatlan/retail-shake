@@ -1,6 +1,7 @@
 <template>
   <ul
     class="
+      tabs
       flex flex-col
       justify-center
       mx-auto
@@ -14,6 +15,7 @@
       :key="i"
       :class="[active === i ? colors[i] : '', className[i]]"
       class="
+        tab
         px-6
         py-3
         rounded-tl-md rounded-tr-md

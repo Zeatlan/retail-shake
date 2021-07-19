@@ -1,6 +1,7 @@
 <template>
   <div
     class="
+      review
       relative
       w-80
       h-84
