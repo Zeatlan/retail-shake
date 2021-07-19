@@ -9,7 +9,7 @@
       rounded-xl
       shadow-xl
       bg-blue-light
-      px-12
+      px-6
       py-16
       my-16
       dark:bg-blue-darker
@@ -37,7 +37,7 @@
         <h2 class="font-extrabold text-xl text-blue-dark dark:text-blue-light">
           {{ name }}
         </h2>
-        <span class="text-gray-dark mt-5">{{ job }}</span>
+        <span class="text-gray-dark text-sm mt-5">{{ job }}</span>
       </div>
       <!-- END INFOS -->
 

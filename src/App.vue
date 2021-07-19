@@ -31,8 +31,10 @@
       opacity-70
       z-50
       hover:opacity-100
-      bottom-16
-      left-6
+      bottom-2
+      left-2
+      sm:bottom-16
+      smleft-6
       md:bottom-6
       md:left-6
     "
@@ -64,8 +66,10 @@
       duration-300
       hover:bg-red-dark
       z-50
-      bottom-16
-      right-8
+      bottom-2
+      right-2
+      sm:bottom-16
+      sm:right-8
       md:bottom-6
       md:right-6
     "
@@ -99,10 +103,8 @@
               mt-12
               font-black
               dark:text-blue-dark
-              text-center
-              md:text-left
-              text-xl
-              md:text-3xl
+              text-center text-2xl
+              md:text-left md:text-3xl
               2xl:text-4xl
             "
           >
@@ -142,7 +144,10 @@
         </div>
 
         <div class="player mt-24">
-          <Player src="/src/assets/retail_shake_demo.mp4" :autoplay="true" />
+          <Player
+            src="https://www.retailshake.com/wp-content/uploads/2020/11/Video-Site-WEB.mp4"
+            :autoplay="true"
+          />
         </div>
       </div>
 
@@ -404,7 +409,14 @@
     <!-- Stats -->
     <section id="stats" class="numbers p-8 bg-blue-darker text-white">
       <div class="flex flex-col container mx-auto">
-        <h1 class="mx-auto font-extrabold text-3xl md:text-6xl">
+        <h1
+          class="
+            mx-auto
+            font-extrabold
+            text-5xl text-center
+            sm:text-left sm:text-6xl
+          "
+        >
           Retail Shake en chiffres
         </h1>
 
@@ -451,11 +463,10 @@
         <h1
           class="
             mx-auto
-            text-6xl
+            text-5xl text-center
+            sm:text-left sm:text-6xl
             font-extrabold
             dark:text-blue-dark
-            text-center
-            md:text-left
           "
         >
           Ce que nos clients racontent
@@ -518,7 +529,15 @@
     <!-- Partnership -->
     <section id="partners" class="mt-16 bg-gray dark:bg-dark-gray">
       <div class="flex flex-col container mx-auto">
-        <h1 class="mx-auto text-6xl font-extrabold dark:text-blue-dark">
+        <h1
+          class="
+            mx-auto
+            text-5xl text-center
+            sm:text-left sm:text-6xl
+            font-extrabold
+            dark:text-blue-dark
+          "
+        >
           Ils nous soutiennent !
         </h1>
 

@@ -14,8 +14,10 @@
         hover:-translate-y-2
         hover:shadow-xl
         dark:bg-dark-gray
-        w-48
-        h-32
+        w-36
+        h-28
+        sm:w-48
+        sm:h-32
         md:w-56
       "
       :style="bg"
@@ -32,8 +34,10 @@
       rounded-3xl
       align-middle
       dark:bg-dark-lightgray
-      w-48
-      h-32
+      w-36
+      h-28
+      sm:w-48
+      sm:h-32
       md:w-56
     "
     :style="bg"

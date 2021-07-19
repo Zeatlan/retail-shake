@@ -19,7 +19,11 @@
     <div class="container flex flex-row items-center justify-between">
       <!-- Logo -->
       <div class="flex items-center flex-shrink-0 text-white mr-6">
-        <img src="../assets/img/logo.png" alt="Retail Shake" width="125" />
+        <img
+          src="https://www.retailshake.com/wp-content/uploads/2020/01/Logo-Retail-Shake_1_172x.png"
+          class="logo duration-250 w-32"
+          alt="Retail Shake"
+        />
       </div>
       <!-- End Logo -->
 
@@ -59,9 +63,10 @@
           class="
             menu
             absolute
-            left-8
+            left-0
+            -top-8
             bg-white
-            w-64
+            w-full
             z-50
             border-t-4 border-blue-darker
             text-md
@@ -246,6 +251,8 @@
 
 <script>
 import gsap from "gsap";
+import $ from "jquery";
+
 export default {
   name: "Nav",
   props: {
@@ -256,6 +263,21 @@ export default {
       searching: false,
       display: false,
     };
+  },
+  mounted() {
+    $("body").bind("touchmove", function (e) {
+      if ($(this).scrollTop() > 100) {
+        $("nav .logo").addClass("w-16");
+        $("nav .logo").removeClass("w-32");
+        $("#responsive-menu .menu").removeClass("top-0");
+        $("#responsive-menu .menu").addClass("-top-8");
+      } else {
+        $("nav .logo").removeClass("w-16");
+        $("nav .logo").addClass("w-32");
+        $("#responsive-menu .menu").removeClass("-top-8");
+        $("#responsive-menu .menu").addClass("top-0");
+      }
+    });
   },
   methods: {
     search() {

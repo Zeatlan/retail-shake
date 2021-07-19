@@ -43,7 +43,7 @@
                 relative
                 p-3
                 w-36
-                z-50
+                z-40
                 rounded-md
                 text-gray-dark
                 focus:outline-none
@@ -60,7 +60,7 @@
               class="
                 relative
                 p-3
-                z-50
+                z-40
                 bg-blue-darker
                 rounded-xl
                 duration-300
