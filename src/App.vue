@@ -91,7 +91,7 @@
         min-h-screen
         overflow-x-hidden
         space-y-24
-        pt-28
+        md:pt-28
         2xl:pt-0
       "
     >
@@ -724,6 +724,11 @@ export default {
     // Set number elements to display on Swiper
     if (window.screen.availWidth < 700) {
       this.nbElementsSwiper = 2;
+    }
+
+    if (window.screen.availWidth > 2000) {
+      document.getElementById("welcome").classList.remove("justify-end");
+      document.getElementById("welcome").classList.add("justify-center");
     }
 
     //? Page animation

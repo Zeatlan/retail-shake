@@ -94,7 +94,7 @@
         </div>
         <div class="flex flex-col mt-6 text-center md:text-left md:w-96">
           <img
-            src="../assets/img/retailshake_icon.png"
+            src="https://zupimages.net/up/21/29/snac.png"
             alt="Retail Shake"
             width="100"
             class="mx-auto mt-12 md:ml-1 md:mt-0"

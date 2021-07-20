@@ -57,14 +57,14 @@
       <!-- MOBILE MENU -->
       <div
         id="responsive-menu"
-        class="hidden absolute top-24 left-16 w-64 lg:hidden"
+        class="hidden absolute top-24 left-16 w-64 z-50 lg:hidden"
       >
         <div
           class="
             menu
             absolute
             left-0
-            -top-8
+            top-0
             bg-white
             w-full
             z-50
@@ -73,7 +73,7 @@
             font-header font-medium
             px-5
             shadow-xl
-            dark:bg-dark-gray
+            dark:bg-dark-darkgray
           "
         >
           <a
@@ -265,19 +265,13 @@ export default {
     };
   },
   mounted() {
-    $("body").bind("touchmove", function (e) {
-      if ($(this).scrollTop() > 100) {
-        $("nav .logo").addClass("w-16");
-        $("nav .logo").removeClass("w-32");
-        $("#responsive-menu .menu").removeClass("top-0");
-        $("#responsive-menu .menu").addClass("-top-8");
-      } else {
-        $("nav .logo").removeClass("w-16");
-        $("nav .logo").addClass("w-32");
-        $("#responsive-menu .menu").removeClass("-top-8");
-        $("#responsive-menu .menu").addClass("top-0");
-      }
-    });
+    if (screen.width < 650) {
+      document.querySelector("nav").classList.remove("fixed");
+      document.querySelector("nav").classList.add("relative");
+    } else {
+      document.querySelector("nav").classList.add("fixed");
+      document.querySelector("nav").classList.remove("fixed");
+    }
   },
   methods: {
     search() {

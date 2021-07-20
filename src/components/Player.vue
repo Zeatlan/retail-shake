@@ -23,7 +23,6 @@ export default {
   },
   computed: {
     getType() {
-      const regex = "[^.]*$";
       this.type = this.src.split(/.*(?<=\.)/);
       return "video/" + this.type[1];
     },
