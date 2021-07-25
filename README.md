@@ -1,6 +1,6 @@
 # Retail Shake
 
-Re-design of Retail Shake website.
+Re-design of Retail Shake homepage.
 
 ## Installation
 
